@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>profile</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script defer src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+<h>тут будущий профиль от Станислава</h>
+<footer>
+    <a href="{% url 'person_info' %}" class="buttonFooter">персональная информация</a>
+    <a href="{% url 'calories_and_bjy' %}" class="buttonFooter">каллории и БЖУ</a>
+    <a href="{% url 'profile' %}" class="buttonFooter">Профиль</a>
+</footer>
+</body>
+</html>

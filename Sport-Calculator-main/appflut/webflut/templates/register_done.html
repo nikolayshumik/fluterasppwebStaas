@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script defer src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+<button class="main-orientations" onclick="goBack()">&lt;</button>
+<h2>Fill your personal info</h2>
+<h2>Hello, {{ request.user.username }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+
+
+</body>
+</html>

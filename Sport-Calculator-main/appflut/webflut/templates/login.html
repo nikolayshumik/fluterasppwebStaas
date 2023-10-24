@@ -1,0 +1,41 @@
+{% extends 'footer.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Авторизация</title>
+    <meta name="viewport" charset="UTF-8" content="width=device-width, initial-scale=1">
+    <!--Медиа запросы, адаптив-->
+    <link media="screen and (max-width: 400px)" href="{% static 'css/main400.css' %}" rel="stylesheet"/>
+    <link media="screen and (min-width: 401px)" href="{% static 'css/main600.css' %}" rel="stylesheet"/>
+    <!--Подключение шрифтов-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&family=Lexend&display=swap" rel="stylesheet">
+    <!--Скрипт-->
+    <script defer src="{% static 'js/main.js' %}"></script>
+</head>
+<body>
+    {% block content %}
+    {% if user.is_authenticated %}
+    
+        <p>Вы уже вошли в систему как {{ user.username }}</p>
+        <a href="{% url 'logout' %}">Выйти</a>
+    {% else %}
+        <form method="post" class="main" action="{% url 'login' %}">
+            {% csrf_token %}
+         
+            <label for="username" style="margin-top: 0px">Имя пользователя:</label>
+            <input type="text" id="username" name="username" placeholder="Username">
+            
+            
+
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" placeholder="Password">
+            <input type="submit" value="Войти" class="enter" style="margin-top: 50px; margin-bottom: 0px;">
+        </form>
+    {% endif %}
+    {% endblock %}
+
+</body>
+</html>
